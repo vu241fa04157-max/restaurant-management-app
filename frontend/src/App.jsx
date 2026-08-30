@@ -38,7 +38,7 @@ export default function App() {
   const categories = ['All', 'Pizza', 'Burgers', 'Beverages', 'Sides', 'Desserts'];
 
   const fetchMenu = () => {
-    fetch('http://127.0.0.1:8000/api/menu')
+    fetch('https://restaurant-management-app-po7q.onrender.com/api/menu')
       .then((res) => res.json())
       .then((data) => {
         setMenu(data);
@@ -51,7 +51,7 @@ export default function App() {
   };
 
   const fetchTables = () => {
-    fetch('http://127.0.0.1:8000/api/tables')
+    fetch('https://restaurant-management-app-po7q.onrender.com/api/tables')
       .then((res) => res.json())
       .then((data) => {
         setTables(data);
@@ -68,7 +68,7 @@ export default function App() {
   }, []);
 
   const fetchOrders = () => {
-    fetch('http://127.0.0.1:8000/api/orders')
+    fetch('https://restaurant-management-app-po7q.onrender.com/api/orders')
       .then((res) => res.json())
       .then((data) => setOrders(data))
       .catch((err) => console.error('Error fetching orders:', err));
@@ -89,7 +89,7 @@ export default function App() {
 
     if (authMode === 'login') {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/auth/login', {
+        const res = await fetch('https://restaurant-management-app-po7q.onrender.com/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: authUsername, password: authPassword }),
@@ -108,7 +108,7 @@ export default function App() {
       }
     } else {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/auth/register', {
+        const res = await fetch('https://restaurant-management-app-po7q.onrender.com/api/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -180,7 +180,7 @@ export default function App() {
     };
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/orders', {
+      const res = await fetch('https://restaurant-management-app-po7q.onrender.com/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -196,7 +196,7 @@ export default function App() {
 
   const updateStatus = async (orderId, newStatus) => {
     try {
-      await fetch(`http://127.0.0.1:8000/api/orders/${orderId}/status`, {
+      await fetch(`https://restaurant-management-app-po7q.onrender.com/api/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -210,7 +210,7 @@ export default function App() {
   // Delete Order Handler
   const handleDeleteOrder = async (orderId) => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/orders/${orderId}`, {
+      const res = await fetch(`https://restaurant-management-app-po7q.onrender.com/api/orders/${orderId}`, {
         method: 'DELETE',
       });
       if (res.ok) {
@@ -234,7 +234,7 @@ export default function App() {
     };
 
     try {
-      await fetch('http://127.0.0.1:8000/api/menu', {
+      await fetch('https://restaurant-management-app-po7q.onrender.com/api/menu', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -250,7 +250,7 @@ export default function App() {
 
   const handleDeleteItem = async (id) => {
     try {
-      await fetch(`http://127.0.0.1:8000/api/menu/${id}`, {
+      await fetch(`https://restaurant-management-app-po7q.onrender.com/api/menu/${id}`, {
         method: 'DELETE',
       });
       fetchMenu();
@@ -266,7 +266,7 @@ export default function App() {
     if (!newTableNumber || !newTableCapacity) return;
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/tables', {
+      const res = await fetch('https://restaurant-management-app-po7q.onrender.com/api/tables', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -288,7 +288,7 @@ export default function App() {
 
   const handleDeleteTable = async (tableId) => {
     try {
-      await fetch(`http://127.0.0.1:8000/api/tables/${tableId}`, {
+      await fetch(`https://restaurant-management-app-po7q.onrender.com/api/tables/${tableId}`, {
         method: 'DELETE',
       });
       fetchTables();
